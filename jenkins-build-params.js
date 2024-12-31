@@ -2,7 +2,7 @@ module.exports = function(RED) {
     const Jenkins = require('jenkins');
     const JSDOM = require('jsdom');
 
-    function JenkinsBuildParamsNode(config) {
+    function NodeJenkinsBuildParams(config) {
         RED.nodes.createNode(this, config);
         this.connection = RED.nodes.getNode(config.connection);
         var node = this;
@@ -12,7 +12,9 @@ module.exports = function(RED) {
             try {
                 node.status({fill:'green', shape:'ring', text:'initializing....'});
 
-                const jobName = config.jobName;
+                if (msg.hasOwnProperty('jobName')) {
+                    const jobName = msg.jobName;
+                }
 
                 const urlParts = node.connection.baseUrl.split('://');
                 const jenkinsClient = new Jenkins({
@@ -33,8 +35,8 @@ module.exports = function(RED) {
                 // params can be an array if multiple params are needed
                 let params = jobName;
                 if (!Array.isArray(params)) {
-                // maybe String only  
-                params = [params];
+                    // maybe String only  
+                    params = [params];
                 }          
 
                 // call method with params, bind to caller
@@ -69,5 +71,5 @@ module.exports = function(RED) {
             }
         });
     }
-    RED.nodes.registerType("jenkins-build-params", JenkinsBuildParamsNode);
+    RED.nodes.registerType("jenkins-build-params", NodeJenkinsBuildParams);
 }
