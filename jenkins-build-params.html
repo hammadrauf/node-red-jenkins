@@ -31,4 +31,9 @@
 </div>
 </script>
 
-
+<script type="text/html" data-help-name="jenkins-build-params">
+    <p>You can pass in <code>msg.method</code> and optional <code>msg.params</code> or specify a method/params in the configuration of the node.</p>
+    <p><code>msg.method</code> is the Jenkins API method to call - Hard coded to <code>job.config</code>.</p>
+    <p><code>msg.jobname</code> is an object containing the parameters to pass to the method. For example, <code>{"jobname": "MyJenkinsPipelineName"}</code>.</p>
+    <p>After execution, the <code>msg.payload</code> will contain the filtered result from XML, containing a list of structure - Jenkins Pipeline Parameter dataType, Name, and Default value (if exists).</p>
+</script>
