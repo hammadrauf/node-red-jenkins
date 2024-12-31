@@ -2,7 +2,7 @@ module.exports = function(RED) {
     const Jenkins = require('jenkins');
     const { JSDOM } = require('jsdom');
 
-    function JenkinsParamsNode(config) {
+    function JenkinsBuildParamsNode(config) {
         RED.nodes.createNode(this, config);
         this.connection = RED.nodes.getNode(config.connection);
         var node = this;
@@ -59,5 +59,5 @@ module.exports = function(RED) {
         });
     }
 
-    RED.nodes.registerType("jenkins-build-params", JenkinsParamsNode);
+    RED.nodes.registerType("jenkins-build-params", JenkinsBuildParamsNode);
 }
