@@ -10,7 +10,8 @@
     "version": ">=2.0.0",
     "nodes": {
       "jenkins": "jenkins.js",
-      "jenkins-connection": "jenkins-connection.js"
+      "jenkins-connection": "jenkins-connection.js",
+      "jenkins-build-params": "jenkins-build-params.js"
     }
   },
   "author": {
@@ -22,7 +23,8 @@
     "url": "https://github.com/kcsoft/node-red-jenkins"
   },
   "dependencies": {
-    "jenkins": "^1.1.0"
+    "jenkins": "^1.1.0",
+    "jsdom": "^20.0.0"
   },
   "keywords": [
     "node-red",
