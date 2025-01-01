@@ -13,7 +13,7 @@ module.exports = function(RED) {
                 node.status({fill:'green', shape:'ring', text:'initializing....'});
 
                 if (msg.hasOwnProperty('jobname')) {
-                    const jobName = msg.jobname;
+                    config.jobname = msg.jobname;
                 }
 
                 const urlParts = node.connection.baseUrl.split('://');
@@ -33,7 +33,7 @@ module.exports = function(RED) {
                 });
         
                 // params can be an array if multiple params are needed
-                let params = jobName;
+                let params = config.jobname;
                 if (!Array.isArray(params)) {
                     // maybe String only  
                     params = [params];
