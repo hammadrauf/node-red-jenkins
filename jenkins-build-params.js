@@ -1,6 +1,6 @@
 module.exports = function(RED) {
     const Jenkins = require('jenkins');
-    const JSDOM = require('jsdom');
+    const { JSDOM } = require('jsdom');
 
     function NodeJenkinsBuildParams(config) {
         RED.nodes.createNode(this, config);
