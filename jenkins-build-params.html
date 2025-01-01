@@ -3,8 +3,12 @@
         category: 'jenkins',
         color: '#a6bbcf',
         defaults: {
-            name: { value: "" },
-            jobName: { value: "" },
+            name: {
+                value:'',
+            },
+            jobname: {
+                value:'',
+            },
             connection: {
                 value: '',
                 type: 'jenkins-connection',
@@ -20,15 +24,20 @@
     });
 </script>
 
-<script type="text/html" data-template-name="jenkins-build-params"></script>
-<div class="form-row">
-    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-    <input type="text" id="node-input-name" placeholder="Name">
-</div>
-<div class="form-row">
-    <label for="node-input-jobName"><i class="icon-tag"></i> Job Name</label>
-    <input type="text" id="node-input-jobName" placeholder="Job Name">
-</div>
+<script type="text/html" data-template-name="jenkins-build-params">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection"><i class="fa fa-plug"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-jobname">
+        <label for="node-input-jobname">Job Name</label>
+        <input type="text" id="node-input-jobname">
+    </div>
 </script>
 
 <script type="text/html" data-help-name="jenkins-build-params">
