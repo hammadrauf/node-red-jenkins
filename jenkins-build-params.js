@@ -12,8 +12,8 @@ module.exports = function(RED) {
             try {
                 node.status({fill:'green', shape:'ring', text:'initializing....'});
 
-                if (msg.hasOwnProperty('jobName')) {
-                    const jobName = msg.jobName;
+                if (msg.hasOwnProperty('jobname')) {
+                    const jobName = msg.jobname;
                 }
 
                 const urlParts = node.connection.baseUrl.split('://');
