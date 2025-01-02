@@ -20,7 +20,7 @@
         },
         //inputs: 1,
         //outputs: 1,
-        icon: "jenkins-job-params.png",
+        //icon: "jenkins-job-params.png",
         label: function() {
             return this.name || "jenkins-job-params";
         }
@@ -29,7 +29,7 @@
 
 <script type="text/html" data-template-name="jenkins-job-params">
     <div class="form-row">
-        <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+        <label for="node-config-input-name"><i class="icon-bookmark"></i> Name</label>
         <input type="text" id="node-config-input-name" placeholder="Params for - Job">
     </div>
     <div class="form-row">
@@ -39,6 +39,10 @@
     <div class="form-row">
         <label for="node-config-input-jobname">Job Name</label>
         <input type="text" id="node-config-input-jobname">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-paramsarray">Params Array</label>
+        <input type="hidden" id="node-config-input-paramsarray">
     </div>
 </script>
 
