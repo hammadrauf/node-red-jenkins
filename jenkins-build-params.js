@@ -28,8 +28,8 @@ module.exports = function(RED) {
                 let method = jenkinsClient;
                 let caller;
                 methodBuildParams.split('.').forEach(m => {
-                caller = method;
-                method = method[m];
+                    caller = method;
+                    method = method[m];
                 });
         
                 // params can be an array if multiple params are needed
@@ -42,26 +42,29 @@ module.exports = function(RED) {
                 // call method with params, bind to caller
                 xml = await method.apply(caller, params);
                 //const xml = data.xml;
+
                 const dom = new JSDOM(xml, { contentType: "text/xml" });
                 const xmlDoc = dom.window.document;
-                const parameterDefinitions = xmlDoc.getElementsByTagName("parameterDefinitions")[0];
-                const elements = parameterDefinitions.children;
                 const results = [];
-
-                for (let element of elements) {
-                    const hudsonModel = element.querySelector("hudson\\.model\\..*");
-                    const name = element.getElementsByTagName("name")[0];
-                    const defaultValue = element.getElementsByTagName("defaultValue")[0];
-                    if (hudsonModel && name) {
-                        results.push({
-                            hudsonModel: hudsonModel.tagName,
-                            name: name.textContent,
-                            defaultValue: defaultValue ? defaultValue.textContent : "Not Provided"
-                        });
-                    }
+                var msg = new Object();
+                reEx = /hudson\.model\..*ParameterDefinition/
+                
+                const allElements = xmlDoc.getElementsByTagName("*");
+                const matchedElements = [];
+              
+                for (let element of allElements) {
+                  const myObj = new Object();
+                  if (reEx.test(element.tagName)) {
+                    myObj.tagName = element.tagName;
+                    //console.log(element['name']);
+                    myObj.name = element.getElementsByTagName("name")[0].innerHTML;
+                    myObj.defaultValue = element.getElementsByTagName("defaultValue")[0] ? element.getElementsByTagName("defaultValue")[0].innerHTML : "NULL"
+                    matchedElements.push(myObj);   
+                  }
                 }
+                const elements = matchedElements;               
+                msg.payload = elements;
 
-                msg.payload = results;
                 node.status({fill:'green', shape:'dot', text:'Done'});
                 node.send(msg);
             } catch (error) {
