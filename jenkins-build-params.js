@@ -55,10 +55,12 @@ module.exports = function(RED) {
                 for (let element of allElements) {
                   const myObj = new Object();
                   if (reEx.test(element.tagName)) {
-                    myObj.tagName = element.tagName;
+                    const fulltagname = element.tagName;
+                    // extract standard DataType from Hudson Datatype String, empty if fails.
+                    myObj.dataType = fulltagname.match(/hudson\.model\.(.*)ParameterDefinition/)[1] || [""];
                     //console.log(element['name']);
                     myObj.name = element.getElementsByTagName("name")[0].innerHTML;
-                    myObj.defaultValue = element.getElementsByTagName("defaultValue")[0] ? element.getElementsByTagName("defaultValue")[0].innerHTML : "NULL"
+                    myObj.defaultValue = element.getElementsByTagName("defaultValue")[0] ? element.getElementsByTagName("defaultValue")[0].innerHTML : ""
                     matchedElements.push(myObj);   
                   }
                 }

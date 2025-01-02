@@ -1,6 +1,6 @@
 {
   "name": "@hammadrauf/node-red-jenkins",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Node-RED node to call Jenkins methods",
   "engines": {
     "node": ">=14.0.0",
