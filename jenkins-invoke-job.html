@@ -1,13 +1,15 @@
 <script type="text/javascript">
-    RED.nodes.registerType('jenkins-build-params', {
+    RED.nodes.registerType('jenkins-invoke-job', {
         category: 'jenkins',
         color: '#a6bbcf',
         defaults: {
             name: {
                 value:'',
             },
-            jobname: {
+            job: {
                 value:'',
+                type: 'jenkins-job-params',
+                required: true,
             },
             connection: {
                 value: '',
@@ -17,14 +19,14 @@
         },
         inputs: 1,
         outputs: 1,
-        icon: "jenkins-build-params.png",
+        icon: "jenkins-invoke-job.png",
         label: function() {
-            return this.name || "jenkins-build-params";
+            return this.name || "jenkins-invoke-job";
         }
     });
 </script>
 
-<script type="text/html" data-template-name="jenkins-build-params">
+<script type="text/html" data-template-name="jenkins-invoke-job">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -34,13 +36,12 @@
         <input type="text" id="node-input-connection">
     </div>
     <div class="form-row">
-        <label for="node-input-jobname">
-        <label for="node-input-jobname">Job Name</label>
-        <input type="text" id="node-input-jobname">
+        <label for="node-input-job"><i class="fa fa-plug"></i> Job</label>
+        <input type="text" id="node-input-job">
     </div>
 </script>
 
-<script type="text/html" data-help-name="jenkins-build-params">
+<script type="text/html" data-help-name="jenkins-invoke-job">
     <p>You can pass in <code>msg.method</code> and optional <code>msg.params</code> or specify a method/params in the configuration of the node.</p>
     <p><code>msg.method</code> is the Jenkins API method to call - Hard coded to <code>job.config</code>.</p>
     <p><code>msg.jobname</code> is an object containing the parameters to pass to the method. For example, <code>{"jobname": "MyJenkinsPipelineName"}</code>.</p>

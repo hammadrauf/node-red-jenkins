@@ -2,11 +2,12 @@ module.exports = function(RED) {
     const Jenkins = require('jenkins');
     const { JSDOM } = require('jsdom');
 
-    function NodeJenkinsBuildParams(config) {
+    function NodeJenkinsJobParams(config) {
         RED.nodes.createNode(this, config);
         this.connection = RED.nodes.getNode(config.connection);
         var node = this;
-        const methodBuildParams = "job.config"
+        const apiMethodJobParams = "job.config"
+        this.paramsarray = []
 
         this.on('input', async function(msg) {
             try {
@@ -27,7 +28,7 @@ module.exports = function(RED) {
                 // method is config.method and can be 'jobs.get'
                 let method = jenkinsClient;
                 let caller;
-                methodBuildParams.split('.').forEach(m => {
+                apiMethodJobParams.split('.').forEach(m => {
                     caller = method;
                     method = method[m];
                 });
@@ -68,7 +69,8 @@ module.exports = function(RED) {
                 msg.payload = elements;
 
                 node.status({fill:'green', shape:'dot', text:'Done'});
-                node.send(msg);
+                this.paramsarray = elements;
+                //node.send(msg);
             } catch (error) {
                 node.status({fill:'red', shape:'dot', text:'Error'});
                 node.error(error);
@@ -76,5 +78,5 @@ module.exports = function(RED) {
             }
         });
     }
-    RED.nodes.registerType("jenkins-build-params", NodeJenkinsBuildParams);
+    RED.nodes.registerType("jenkins-job-params", NodeJenkinsJobParams);
 }
