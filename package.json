@@ -1,6 +1,6 @@
 {
   "name": "@hammadrauf/node-red-jenkins",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Node-RED node to call Jenkins methods",
   "engines": {
     "node": ">=14.0.0",
@@ -10,9 +10,9 @@
     "version": ">=2.0.0",
     "nodes": {
       "jenkins": "jenkins.js",
+      "jenkins-invoke-job": "jenkins-invoke-job.js",
       "jenkins-connection": "jenkins-connection.js",
-      "jenkins-job-params": "jenkins-job-params.js",
-      "jenkins-invoke-job": "jenkins-invoke-job.js"
+      "jenkins-job-params": "jenkins-job-params.js"
     }
   },
   "author": {

@@ -1,6 +1,6 @@
 module.exports = function(RED) {
     const Jenkins = require('jenkins');
-    const Job = require('jenkins-job-params');
+    //const Job = require('jenkins-job-params');
     const { JSDOM } = require('jsdom');
 
     function NodeJenkinsInvokeJob(config) {
