@@ -14,8 +14,8 @@ module.exports = function(RED) {
             try {
                 node.status({fill:'green', shape:'ring', text:'initializing....'});
 
-                if (job.hasOwnProperty('paramsarray')) {
-                     this.paramsarray = job.paramsarray;
+                if (this.job.paramsarray) {
+                     this.paramsarray = this.job.paramsarray;
                 }
 
                 const urlParts = node.connection.baseUrl.split('://');
