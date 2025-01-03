@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('jenkins-job-params', {
         category: 'config',
-        color: '#a6bbcf',
+        color: '#a6bb6f',
         defaults: {
             name: {
                 value:'',
@@ -13,10 +13,10 @@
                 value: '',
                 type: 'jenkins-connection',
                 required: true,
-            },
-            paramsarray: {
-                value: [],
             }
+            // paramsarray: {
+            //     value: [],
+            // }
         },
         //inputs: 1,
         //outputs: 1,
@@ -37,12 +37,12 @@
         <input type="text" id="node-config-input-connection">
     </div>
     <div class="form-row">
-        <label for="node-config-input-jobname">Job Name</label>
+        <label for="node-config-input-jobname"> Job Name</label>
         <input type="text" id="node-config-input-jobname">
     </div>
-    <div class="form-row">
-        <label for="node-config-input-paramsarray">Params Array</label>
+    <!-- <div class="form-row">
+        <label for="node-config-input-paramsarray"> Params Array</label>
         <input type="hidden" id="node-config-input-paramsarray">
-    </div>
+    </div> -->
 </script>
 

@@ -14,9 +14,9 @@ module.exports = function(RED) {
             try {
                 node.status({fill:'green', shape:'ring', text:'initializing....'});
 
-                if (this.job.paramsarray) {
-                     this.paramsarray = this.job.paramsarray;
-                }
+                // if (this.job.paramsarray) {
+                //      this.paramsarray = this.job.paramsarray;
+                // }
 
                 const urlParts = node.connection.baseUrl.split('://');
                 const jenkinsClient = new Jenkins({
@@ -35,7 +35,8 @@ module.exports = function(RED) {
                 });
         
                 // params can be an array if multiple params are needed
-                let params = this.paramsarray;
+                // let params = this.paramsarray;
+                let params = []
                 if (!Array.isArray(params)) {
                     params = [params];
                 }          

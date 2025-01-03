@@ -7,7 +7,7 @@ module.exports = function(RED) {
         this.connection = RED.nodes.getNode(config.connection);
         var node = this;
         const apiMethodJobParams = "job.config"
-        this.paramsarray = []
+        // this.paramsarray = []
 
         this.on('input', async function(msg) {
             try {
@@ -69,8 +69,8 @@ module.exports = function(RED) {
                 msg.payload = elements;
 
                 node.status({fill:'green', shape:'dot', text:'Done'});
-                this.paramsarray = elements;
-                //node.send(msg);
+                //this.paramsarray = elements;
+                // node.send(msg);
             } catch (error) {
                 node.status({fill:'red', shape:'dot', text:'Error'});
                 node.error(error);
